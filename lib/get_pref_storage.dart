@@ -17,13 +17,13 @@ class GetPrefStorage {
   late GetStorage box;
   store(String key, dynamic value) {
     assert(_initCalled,
-        "GetPrefStorage.init() must be called first in an initState() preferably!");
+        "GetPrefStorage.init() must be called first in an initState() or main() preferably!");
     box.write(key, value);
   }
 
   read(String key) {
     assert(_initCalled,
-        "GetPrefStorage.init() must be called first in an initState() preferably!");
+        "GetPrefStorage.init() must be called first in an initState() or main() preferably!");
     return box.read(key);
   }
 }
