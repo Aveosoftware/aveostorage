@@ -1,4 +1,4 @@
-import 'package:get_storage/get_storage.dart';
+part of 'aveostorage.dart';
 
 class GetPrefStorage {
   GetPrefStorage._();

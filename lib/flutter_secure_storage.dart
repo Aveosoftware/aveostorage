@@ -1,4 +1,4 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+part of 'aveostorage.dart';
 
 class SecurePref {
   SecurePref._();
@@ -33,12 +33,4 @@ class SecurePref {
   deleteAllPrefs() async {
     await storage.deleteAll();
   }
-  // IOSOptions _getIOSOptions() => IOSOptions(
-  //       accountName: _getAccountName(),
-  //     );
-
-  AndroidOptions _getAndroidOptions() => const AndroidOptions(
-        encryptedSharedPreferences: true,
-      );
-
 }

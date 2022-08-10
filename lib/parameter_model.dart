@@ -1,5 +1,5 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
-
+part of 'aveostorage.dart';
 enum RuntimeType { Int, String, Real }
 
 // enum SqlKey {

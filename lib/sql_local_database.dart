@@ -1,7 +1,4 @@
-import 'package:aveostorage/model/parameter_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+part of 'aveostorage.dart';
 
 class SqlLocalDatabase {
   SqlLocalDatabase._();
@@ -55,15 +52,56 @@ class SqlLocalDatabase {
     await _database!.rawQuery(createQuery);
   }
 
-  Future insertValue(String tableName,) async {
+  Future insertValue(String tableName, Map<String, Object?> values) async {
     await _database!.transaction((txn) async {
-      int id1 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES("some name", 1234, 456.789)');
-      print('inserted1: $id1');
-      int id2 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES(?, ?, ?)',
-          ['another name', 12345678, 3.1416]);
-      print('inserted2: $id2');
+      txn.insert(tableName, values);
+    });
+  }
+
+  Future<List<Map<String, Object?>>> query(String tableName, String table,
+      {bool? distinct,
+      List<String>? columns,
+      String? where,
+      List<Object?>? whereArgs,
+      String? groupBy,
+      String? having,
+      String? orderBy,
+      int? limit,
+      int? offset}) async {
+    List<Map<String, Object?>> data = [];
+    await _database!.transaction((txn) async {
+      data = await txn.query(tableName,
+          columns: columns,
+          distinct: distinct,
+          groupBy: groupBy,
+          having: having,
+          limit: limit,
+          offset: offset,
+          orderBy: orderBy,
+          where: where,
+          whereArgs: whereArgs);
+    });
+    return data;
+  }
+
+  Future updateValue(
+    String tableName,
+    Map<String, Object?> values, {
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    await _database!.transaction((txn) async {
+      txn.update(tableName, values, where: where, whereArgs: whereArgs);
+    });
+  }
+
+  Future deleteValue(
+    String tableName, {
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    await _database!.transaction((txn) async {
+      txn.delete(tableName, where: where, whereArgs: whereArgs);
     });
   }
 }
