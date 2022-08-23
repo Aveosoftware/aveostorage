@@ -1,36 +1,35 @@
 part of 'aveostorage.dart';
 
 class SecurePref {
-  SecurePref._();
 
   /// In case the developer does not explicitly call the [init()] function.
   // bool _initCalled = false;
 
-  final storage = const FlutterSecureStorage();
+  static const _storage =  FlutterSecureStorage();
 
   // Write value
-  store(String key, String value) async {
-    await storage.write(key: key, value: value);
+ static store(String key, String value) async {
+    await _storage.write(key: key, value: value);
   }
 
   // Read value
-  Future<String> read(String key) async {
-    return await storage.read(key: key) ?? "";
+  static Future<String> read(String key) async {
+    return await _storage.read(key: key) ?? "";
   }
 
   // Delete value
-  deleteValue(String key) async {
-    await storage.delete(key: key);
+  static deleteValue(String key) async {
+    await _storage.delete(key: key);
   }
 
   // Read values
-  Future<Map<String, String>> readAllValues(String key) async {
-    Map<String, String> allValues = await storage.readAll();
+  static Future<Map<String, String>> readAllValues(String key) async {
+    Map<String, String> allValues = await _storage.readAll();
     return allValues;
   }
 
   // Delete all
-  deleteAllPrefs() async {
-    await storage.deleteAll();
+  static deleteAllPrefs() async {
+    await _storage.deleteAll();
   }
 }
