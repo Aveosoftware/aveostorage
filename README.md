@@ -1,20 +1,16 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
 # AveoStorage
 
 AveoStorage is a complete package for offline & online storages predefined functions for the use of storing and retriving data.
-## Features
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Android](#android)
+    - [IOS](#ios)
+  - [Usage](#usage)
+    - [Shared Prefrences](#shared-prefrences)
+    - [Get Storage](#get-storage)  
+  - [Additional information](#additional-information)
+
+    
 Currently It contains the below type of storage options:
 ```
 > Shared Prefrences
